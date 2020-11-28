@@ -36,4 +36,13 @@ export default class Model {
       ) || null
     );
   }
+  delete(key) {
+    if (this.find(key)) {
+      this.$collection = this.$collection.filter((entry) => {
+        entry[this.$options.primaryKey] !== key;
+      });
+      return true;
+    }
+    return false;
+  }
 }
